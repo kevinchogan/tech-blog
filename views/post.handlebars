@@ -1,0 +1,11 @@
+{{#if loggedIn}}
+<section class="card">
+    <div class="card-header">
+        <div class="post-header">{{postData.title}}</div>
+        <div class="post-info">Posted by {{postData.user.username}} on {{format_date postData.createdAt}}</div>
+    </div>
+    <p class="card=body">{{postData.body}}</p>
+</section>
+{{else}}
+<a href="/login">You must login first to view the posts</a>
+{{/if}}

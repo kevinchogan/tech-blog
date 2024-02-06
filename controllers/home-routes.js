@@ -26,11 +26,22 @@ router.get('/', async (req, res) => {
 router.get('/posts/:id', async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.params.id, {
-      include: [{ model: Comment }],
+      include: [{ model: Comment }, {model: User}],
     });
 
     const postData = dbPostData.get({ plain: true });
-    res.render('post', { postData, loggedIn: req.session.loggedIn, });
+    
+    if(req.session.username === postData.user.username) {
+      res.render('my-post', { 
+        postData, 
+       });
+    } else {
+      res.render('post', { 
+        postData, 
+        loggedIn: req.session.loggedIn,
+        username: req.session.username,
+       });
+    }
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
