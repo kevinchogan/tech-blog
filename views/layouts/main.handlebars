@@ -15,12 +15,12 @@
     <a href="/">Home</a>
     <a href="/dashboard">Dashboard</a>
     <!-- If the user is logged in, show a logout button -->
-    {{!-- {{#if loggedIn}} --}}
+    {{#if loggedIn}}
     <button id="logout" class="btn-no-style">Logout</button>
-    {{!-- {{else}} --}}
+    {{else}}
     <!-- Otherwise, show a link to login -->
     <a href="/login">Login</a>
-    {{!-- {{/if}} --}}
+    {{/if}}
   </nav>
     <header>
     <h1>The Tech Blog</h1>
@@ -31,9 +31,9 @@
     </div>
   </main>
   <!-- If the user is logged in, load the JS script for when they logout -->
-  {{!-- {{#if loggedIn}} --}}
+  {{#if loggedIn}}
   <script src="/js/logout.js"></script>
-  {{!-- {{/if}} --}}
+  {{/if}}
 </body>
 
 </html>
