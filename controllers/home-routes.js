@@ -31,7 +31,7 @@ router.get('/posts/:id', async (req, res) => {
 
     const postData = dbPostData.get({ plain: true });
     
-    if(req.session.username === postData.user.username) {
+    if(req.session.user_id === postData.user.id) {
       res.render('my-post', { 
         postData, 
        });
@@ -39,7 +39,6 @@ router.get('/posts/:id', async (req, res) => {
       res.render('post', { 
         postData, 
         loggedIn: req.session.loggedIn,
-        username: req.session.username,
        });
     }
   } catch (err) {
