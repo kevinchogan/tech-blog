@@ -9,7 +9,7 @@ const userdata = [
   {
     username: 'Laura',
     email: 'lauradev@pacbell.net',
-    password: 'poopoo',
+    password: 'coriolanus',
   },
   {
     username: 'Kevin',
