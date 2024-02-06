@@ -68,12 +68,13 @@
   }
   
   .posts {
+    width: 100%;
     flex: 4;
     flex-direction: column;
     background-color: #fff;
     padding: 10px;
     display: flex;
-    justify-content: top;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -106,19 +107,6 @@
     height: auto;
   }
   
-  .painting {
-    width: 50%;
-    background-color: white;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    margin-bottom: 25px;
-  }
-  
-  .painting-details {
-    text-align: center;
-    padding: 10px 20px;
-    font-weight: bold;
-  }
-  
   /* CARDS */
   .card {
     margin: 5px;
@@ -132,8 +120,6 @@
   }
   
   .login-card {
-    /* margin: 0 0 20px 0; */
-    /* flex: 0 1 70%; */
     width: 100%;
     padding: 5px;
     border: 3px solid var(--dark);
@@ -143,6 +129,23 @@
     background-color: #577a7c;
     color: var(--light);
   }
+
+  .login-form {
+    width: 100%;
+  }
+
+  .update-card {
+    width: 80%;
+    margin: 0;
+    padding: 5px;
+    border: 3px solid var(--dark);
+    border-radius: var(--border-radius);
+    border-style: solid;
+    border-width: 2px;
+    background-color: #577a7c;
+    color: var(--light);
+  }
+
   
   .card-header {
     display: flex;

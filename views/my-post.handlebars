@@ -1,7 +1,21 @@
-<section class="card">
-    <div class="card-header">
-        <div class="post-header">{{postData.title}}</div>
-        <div class="post-info">Posted by me on {{format_date postData.createdAt}}</div>
-    </div>
-    <p class="card=body">{{postData.body}}</p>
-</section>
+<div>
+  <div class="update-card">
+    <h2 class="page-title">Edit Post</h2>
+    <form class="form update-form">
+      <div class="form-group">
+        <label for="post-title">Title:</label>
+        <input class="form-input" type="text" id="post-title" value="{{postData.title}}"/>
+      </div>
+      <div class="form-group">
+        <label for="post-body">Body:</label>
+        <input class="form-input" type="text" id="post-body" value="{{postData.body}}"/>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" type="submit" id="submit-btn" data-id="{{postData.id}}">Submit</button>
+        <button class="btn btn-primary" type="button" id="delete-btn" data-id="{{postData.id}}">Delete</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script src="../js/update.js"></script>
