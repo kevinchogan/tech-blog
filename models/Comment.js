@@ -29,10 +29,6 @@ Comment.init(
         key: "id",
       },
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
   },
   {
     sequelize,

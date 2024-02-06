@@ -26,10 +26,6 @@ Post.init(
         key: "id",
       },
     },
-    date: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
   },
   {
     sequelize,

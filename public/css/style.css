@@ -32,6 +32,7 @@
     text-align: left;
     background: var(--primary);
     color: var(--light);
+    padding: 20px;
   }
   
   main {
