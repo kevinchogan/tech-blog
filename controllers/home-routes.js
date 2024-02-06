@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
 
     res.render('homepage', {
       postData,
+      loggedIn: req.session.loggedIn,
     });
   } catch (err) {
     console.log(err);
@@ -29,7 +30,7 @@ router.get('/posts/:id', async (req, res) => {
     });
 
     const postData = dbPostData.get({ plain: true });
-    res.render('post', { postData });
+    res.render('post', { postData, loggedIn: req.session.loggedIn, });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -47,4 +48,9 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+
+// Sign up route
+router.get('/signup', (req, res) => {
+  res.render('signup');
+});
 module.exports = router;
