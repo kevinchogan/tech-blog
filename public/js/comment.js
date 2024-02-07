@@ -12,7 +12,8 @@ const updateCommentHandler = async (event) => {
     });
   
     if (response.ok) { 
-      document.location.replace("/");
+      // document.location.replace("/");
+      document.location.reload();
     } else {
       alert("Failed to post comment.");
     }
