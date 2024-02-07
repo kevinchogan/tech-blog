@@ -87,6 +87,12 @@ router.get("/posts/:id", async (req, res) => {
   }
 });
 
+router.get("/newpost", (req, res) => {
+  res.render("newpost", {
+    userId: req.session.user_id,
+  });
+})
+
 // Login route
 router.get("/login", (req, res) => {
   // If the user is already logged in, redirect to the homepage
