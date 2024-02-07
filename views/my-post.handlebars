@@ -1,7 +1,6 @@
-<div>
-  <div class="update-card">
-    <h2 class="page-title">Edit Post</h2>
-    <form class="form update-form">
+<section class="card login-card">
+  <form class="form update-form">
+    <h2 class="card-header">Edit Post</h2>
       <div class="form-group">
         <label for="post-title">Title:</label>
         <input class="form-input" type="text" id="post-title" value="{{postData.title}}"/>
@@ -14,8 +13,7 @@
         <button class="btn btn-primary" type="submit" id="submit-btn" data-id="{{postData.id}}">Submit</button>
         <button class="btn btn-primary" type="button" id="delete-btn" data-id="{{postData.id}}">Delete</button>
       </div>
-    </form>
-  </div>
-</div>
+  </form>
+</section>
 
 <script src="../js/update.js"></script>
