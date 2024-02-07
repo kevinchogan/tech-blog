@@ -13,10 +13,38 @@ router.get("/", async (req, res) => {
     res.render("homepage", {
       postData,
       loggedIn: req.session.loggedIn,
+      pageTitle: "The Tech Blog",
     });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
+  }
+});
+
+// GET user posts for homepage
+router.get("/dashboard", async (req, res) => {
+  if (req.session.loggedIn) {
+    try {
+      const dbPostData = await Post.findAll({
+        where: {
+          user_id: req.session.user_id,
+        },
+        include: [{ model: User }],
+      });
+
+      const postData = dbPostData.map((post) => post.get({ plain: true }));
+
+      res.render("homepage", {
+        postData,
+        loggedIn: req.session.loggedIn,
+        pageTitle: "Dashboard",
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  } else {
+    res.redirect("/login");
   }
 });
 
