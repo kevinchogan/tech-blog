@@ -60,6 +60,14 @@
     text-decoration: none;
     text-align: center;
   }
+ 
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .card a:hover {
+    text-decoration: none;
+  }
   
   nav a:hover,
   .btn-no-style:hover {
