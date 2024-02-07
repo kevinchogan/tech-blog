@@ -14,6 +14,7 @@ router.get("/", async (req, res) => {
       postData,
       loggedIn: req.session.loggedIn,
       pageTitle: "The Tech Blog",
+      isDashboard: false,
     });
   } catch (err) {
     console.log(err);
@@ -38,6 +39,7 @@ router.get("/dashboard", async (req, res) => {
         postData,
         loggedIn: req.session.loggedIn,
         pageTitle: "Dashboard",
+        isDashboard: true,
       });
     } catch (err) {
       console.log(err);
