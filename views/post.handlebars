@@ -6,6 +6,15 @@
     </div>
     <p class="card=body">{{postData.body}}</p>
 </section>
+<section class="card">
+    {{#if comment.body}}
+        <p class="card=body">{{comment.body}}</p>
+        <p class="card=body">- {{comment.author}}, {{format_date comment.date}} </p>
+    {{else}}
+        <p>Does not have a comment</p>
+    {{/if}}
+</section>
+
 {{else}}
 <a href="/login">You must login first to view the posts</a>
 {{/if}}

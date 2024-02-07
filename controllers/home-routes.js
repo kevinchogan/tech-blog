@@ -1,18 +1,16 @@
-const router = require('express').Router();
-const { User, Post, Comment } = require('../models');
+const router = require("express").Router();
+const { User, Post, Comment } = require("../models");
 
 // GET all posts for homepage
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const dbPostData = await Post.findAll({
       include: [{ model: User }],
     });
 
-    const postData = dbPostData.map((post) =>
-      post.get({ plain: true })
-    );
-    
-    res.render('homepage', {
+    const postData = dbPostData.map((post) => post.get({ plain: true }));
+
+    res.render("homepage", {
       postData,
       loggedIn: req.session.loggedIn,
     });
@@ -23,23 +21,34 @@ router.get('/', async (req, res) => {
 });
 
 // GET one post
-router.get('/posts/:id', async (req, res) => {
+router.get("/posts/:id", async (req, res) => {
   try {
     const dbPostData = await Post.findByPk(req.params.id, {
-      include: [{ model: Comment }, {model: User}],
+      include: [{ model: Comment }, { model: User }],
     });
 
     const postData = dbPostData.get({ plain: true });
-    
-    if(req.session.user_id === postData.user.id) {
-      res.render('my-post', { 
-        postData, 
-       });
+
+    if (req.session.user_id === postData.user.id) {
+      res.render("my-post", {
+        postData,
+      });
     } else {
-      res.render('post', { 
-        postData, 
+      let userComment = {};
+      postData.comments.map((comment) => {
+        if (comment.user_id === req.session.user_id) {
+          userComment = {
+            body: comment.comment,
+            author: req.session.username,
+            date: comment.createdAt,
+          };
+        }
+      });
+      res.render("post", {
+        postData,
         loggedIn: req.session.loggedIn,
-       });
+        comment: userComment,
+      });
     }
   } catch (err) {
     console.log(err);
@@ -48,19 +57,18 @@ router.get('/posts/:id', async (req, res) => {
 });
 
 // Login route
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   // If the user is already logged in, redirect to the homepage
   if (req.session.loggedIn) {
-    res.redirect('/');
+    res.redirect("/");
     return;
   }
   // Otherwise, render the 'login' template
-  res.render('login');
+  res.render("login");
 });
 
-
 // Sign up route
-router.get('/signup', (req, res) => {
-  res.render('signup');
+router.get("/signup", (req, res) => {
+  res.render("signup");
 });
 module.exports = router;
