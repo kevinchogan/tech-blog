@@ -48,6 +48,7 @@ router.get("/posts/:id", async (req, res) => {
         postData,
         loggedIn: req.session.loggedIn,
         comment: userComment,
+        userId: req.session.user_id,
       });
     }
   } catch (err) {
