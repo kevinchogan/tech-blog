@@ -12,6 +12,19 @@ const signupFormHandler = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
 
+    // Check for valid email format
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      alert("Please enter a valid email address.");
+      return; // Stop further execution
+    }
+
+    // Check for password length
+    if (password.length < 6) {
+      alert("Password must be at least 6 characters long.");
+      return; // Stop further execution
+    }
+
     if (response.ok) {
       document.location.replace("/");
     } else {
